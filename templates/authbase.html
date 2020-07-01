@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      {% block meta %}
+      {% endblock%}
+     {% include "layout/css.html" %}
+      
+</head>
+<body  data-col="2-columns" class=" 2-columns ">
+     
+      {% block content %}
+      {% endblock content %}
+
+      {% include "layout/js.html" %}
+      
+<script>
+      var  form_feilds = document.getElementsByTagName('input')
+      form_feilds[1].placeholder = 'Username...';
+      form_feilds[2].placeholder = "Email...";
+      form_feilds[3].placeholder = "password...";
+      form_feilds[4].placeholder = 'Confirm Password...';
+
+      for(var field in form_feilds){
+            form_feilds[field].className += 'form-control'
+      }
+</script>
+</body>
+</html>

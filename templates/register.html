@@ -1,0 +1,93 @@
+{% extends 'authbase.html' %}
+{% load static %}
+{% block meta %}
+     
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+<meta name="description" content="Michael is the developer that is doing this , so this page is actually the texting part of evything.">
+<meta name="keywords" content="admin template, Convex admin template, dashboard template, flat admin template, responsive admin template, web app">
+<meta name="author" content="PIXINVENT">
+<title>eCommerce Dashboard - Convex bootstrap 4 admin dashboard template</title>
+
+{% endblock %}
+
+{% block content %}
+
+<section id="regestration">
+      <div class="container-fluid">
+          <div class="row full-height-vh">
+              <div class="col-12 d-flex align-items-center justify-content-center gradient-aqua-marine">
+                  <div class="card px-4 py-2 box-shadow-2">
+                      <div class="card-header text-center">
+                          <img src="{% static "img/logos/logo-color-big.png " %}" alt="company-logo" class="mb-3" width="80">
+                          <h4 class="text-uppercase text-bold-400 grey darken-1">Signup</h4>
+                      </div>
+                      <div class="card-body">
+                          <div class="card-block mx-auto">
+                              <form method="POST" action="">
+                                    {% csrf_token %}
+                                  <div class="form-group">
+                                      <div class="col-md-12">
+                                          {% for error in form.username.errors%}
+                                              <label for="" style="color: red; font-style: italic;">{{error|escape}}</label> 
+                                          {% endfor %}
+                                         {{form.username}}
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <div class="col-md-12">
+                                         
+                                          {{form.email}}
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                        
+                                      <div class="col-md-12">
+                                          {{form.password1}}
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                    
+                                      <div class="col-md-12">
+                                          {% for error in form.password2.errors%}
+                                          <label for="" style="color: red; font-style: italic;">{{error}}</label> 
+                                          {% endfor %}
+                                          {{form.password2}}
+                                      </div>
+                                  </div>
+                                  
+                                  <div class="form-group col-sm-offset-1">
+                                      <div class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+                                          <input type="checkbox" class="custom-control-input" checked id="terms">
+                                          <label class="custom-control-label pl-2" for="terms">I agree <a>terms and conditions</a></label>
+                                      </div>
+                                  </div>
+                                  <div class="form-group text-center">
+                                      <input type="submit" name="Get Started" class="btn btn-danger px-4 py-2 text-uppercase white font-small-4 box-shadow-2 border-0">
+                                  </div>
+                                  <div class="card-footer grey darken-1">
+                                    <div class="text-center mb-1">Forgot Password? <a><b>Reset</b></a></div>
+                                    <div class="text-center">Already have an account? <a href="{% url 'login'%}"><b>Signin</b></a></div>
+                                </div>
+                              </form>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+{% endblock %}
+
+<script>
+      var  form_feilds = document.getElementsByTagName('input')
+      form_feilds[1] = placeholder = "Username...";
+      form_feilds[2] = placeholder = "Email...";
+      form_feilds[3] = placeholder = "password...";
+      form_feilds[4] = placeholder = "Confirm Password...";
+
+      for(var field in form_feilds){
+            form_feilds[field].className += 'form-control form-control-lg'
+      }
+</script>

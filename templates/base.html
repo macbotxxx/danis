@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     
+     {% block meta %}
+     {% endblock%}
+     {% include "layout/css.html" %}
+     {% block mik %}
+     {% endblock %}
+      
+</head>
+<body  data-col="2-columns" class=" 2-columns ">
+      {% include "layout/header.html" %}
+      {% block content %}
+      {% endblock content %}
+
+      {% include "layout/js.html" %}
+</body>
+</html>

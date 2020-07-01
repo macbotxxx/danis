@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block meta %}
+     
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+<meta name="description" content="Customer page is the developer that is doing this , so this page is actually the texting part of evything.">
+<meta name="keywords" content="admin template, Convex admin template, dashboard template, flat admin template, responsive admin template, web app">
+<meta name="author" content="PIXINVENT">
+<title>eCommerce Dashboard - Convex bootstrap 4 admin dashboard template</title>
+
+{% endblock %}
+
+{% block content %}
+<section id="card-column">
+      <div class="row">
+        <div class="col-12 mt-3 mb-1"><br><br><br>
+          <!-- <h2 class="content-header">Card columns</h2>
+          <p class="content-sub-header">Cards can be organized into Masonry-like columns with just CSS by wrapping them in <code>.card-columns</code>. Cards are built with CSS <code>column</code> properties instead of flexbox for easier alignment. Cards are ordered from top to bottom and left to right.</p> -->
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="card-columns">
+           
+           
+            
+            <div class="card p-3 text-center">
+              <blockquote class="blockquote mb-0">
+               <button type="submit" class="btn btn-primary">Update Customer</button><br>
+               <a href=" {% url 'create_order' customers.id %} " type="submit" class="btn btn-danger">Place New Order</a>
+              </blockquote>
+            </div>
+            <div class="card p-3 text-left">
+                  <blockquote class="blockquote mb-0">
+                  <H4><strong> Contact Information</strong></H4>
+                  <hr>
+                  <strong>Email: </strong> {{customers.name}}<br>
+                  <strong>Phone:  </strong> {{customers.phone}}
+                  </blockquote>
+                </div>
+            <div class="card">
+              <div class="card-body">
+                <div class="card-block">
+                  <blockquote class="blockquote mb-0">
+                        <H4><strong>Orders Information</strong></H4>
+                        <hr>
+                       <strong>{{total_order}}</strong>
+                        </blockquote>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="dark">
+      <div class="row">
+          <div class="col-sm-12">
+              <div class="card card-body">
+                  <form action="" method="get">
+                    
+                    {{myFilter.form}}
+                    <button type="submit">Search</button>
+                  </form>
+              </div>
+          </div>
+      </div>
+    </section>        
+    <section id="dark">
+      <div class="row">
+          <div class="col-sm-12">
+              <div class="card">
+                 
+                  <div class="card-body">
+                      <div class="card-block">
+                          <table class="table">
+                              <thead class="thead-inverse">
+                                  <tr>
+                                      <th>#</th>
+                                      <th>Product</th>
+                                      <th>Category</th>
+                                      <th>Note</th>
+                                      <th>Date Ordered</th>
+                                      <th>Status</th>
+                                      <th>Update</th>
+                                      <th>Remove</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                 
+                                    {% for p in order %}
+                                    <tr>
+                                      <th scope="row">{{p.id}}</th>
+                                      <td>{{p.product}}</td>
+                                      <td>{{p.product.category}}</td>
+                                      <td>{{p.note}}</td>
+                                      <td>{{p.date_created | timesince}}</td>
+                                      <td>{{p.status}}</td>
+                                     <td><a href="{% url 'edit_order' p.id %}" class="btn btn-warning">Update</a></td>
+                                  <td><a href="{% url 'delete' p.id %}" class="btn btn-danger">Remove</a></td>
+                                    </tr>
+                                    {% endfor %}
+                                 
+                                
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </section>
+{% endblock %}

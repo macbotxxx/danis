@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block meta %}
+     
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+<meta name="description" content="Michael is the developer that is doing this , so this page is actually the texting part of evything.">
+<meta name="keywords" content="admin template, Convex admin template, dashboard template, flat admin template, responsive admin template, web app">
+<meta name="author" content="PIXINVENT">
+<title>Settings - Convex bootstrap 4 admin dashboard template</title>
+
+{% endblock %}
+
+ {% block content %}
+ <br><br><br><br>
+ <section id="user-area">
+      <div class="row">
+          <div class="col-xl-3 col-lg-12">
+              <div class="card mb-4">
+                  <div class="card-header">
+                      <div class="card-title-wrap bar-primary">
+                          <div class="card-title">Personal Information</div>
+                      </div>
+                  </div>
+                  <div class="card-body">
+                      <div class="card-block">
+                          <div class="align-self-center halfway-fab text-center">
+                              <a class="profile-image">
+                                  <img src="{{request.user.customer.profile_pic.url}}" class="rounded-circle img-border gradient-summer width-100" alt="Card image">
+                              </a>
+                          </div>
+                          <div class="text-center">
+                              <span class="font-medium-2 text-uppercase">{{request.user.customer.name}}</span>
+                              <p class="grey font-small-2">Ninja Developer</p>
+                          </div>
+                          <div class="row">
+                              <div class="col-12 col-sm-6">
+                                  <ul class="no-list-style pl-0 text-center">
+                                      <li class="mb-2">
+                                          <span class="text-bold-500 primary"><a><i class="icon-present font-small-3"></i> Birthday:</a></span>
+                                          <span class="display-block overflow-hidden">June 10th, 1988</span>
+                                      </li>
+                                      <li class="mb-2">
+                                          <span class="text-bold-500 primary"><a><i class="ft-globe font-small-3"></i> Lives in:</a></span>
+                                          <span class="display-block overflow-hidden">Denver, USA</span>
+                                      </li>
+                                      <li class="mb-2">
+                                          <span class="text-bold-500 primary"><a><i class="ft-user font-small-3"></i> Gender:</a></span>
+                                          <span class="display-block overflow-hidden">Male</span>
+                                      </li>
+                                      <li class="mb-2">
+                                          <span class="text-bold-500 primary"><a><i class="ft-mail font-small-3"></i> Email:</a></span>
+                                          <a class="display-block overflow-hidden">{{request.user.email}}</a>
+                                      </li>
+                                  </ul>
+                              </div>
+                              <div class="col-12 col-sm-6">
+                                  <ul class="no-list-style pl-0 text-center">                                    
+                                      <li class="mb-2">
+                                          <span class="text-bold-500 primary"><a><i class="ft-monitor font-small-3"></i> Website:</a></span>
+                                          <a class="display-block overflow-hidden">pixinvent.com</a>
+                                      </li>
+                                      <li class="mb-2">
+                                          <span class="text-bold-500 primary"><a><i class="ft-smartphone font-small-3"></i> Phone Number:</a></span>
+                                          <span class="display-block overflow-hidden">{{request.user.customer.phone}}</span>
+                                      </li>
+                                      <li class="mb-2">
+                                          <span class="text-bold-500 primary"><a><i class="ft-briefcase font-small-3"></i> Occupation:</a></span>
+                                          <span class="display-block overflow-hidden">Ninja Developer</span>
+                                      </li>
+                                      <li class="mb-2">
+                                          <span class="text-bold-500 primary"><a><i class="ft-book font-small-3"></i> Joined:</a></span>
+                                          <span class="display-block overflow-hidden">{{request.user.customer.date_created | timesince }}</span>
+                                      </li>
+                                  </ul>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+             
+          </div>
+     
+
+          <div class="col-md-9">
+                <div class="card card-body">
+                  <form action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{form.as_p}}
+                        <input type="submit" class="btn btn-prinmary"  name="Update Information" >
+                  </form>
+                </div>
+
+          </div>
+     
+      </div>
+</section>
+
+
+  {% endblock %}

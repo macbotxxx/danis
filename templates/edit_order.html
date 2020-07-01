@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block meta %}
+     
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+<meta name="description" content="Michael is the developer that is doing this , so this page is actually the texting part of evything.">
+<meta name="keywords" content="admin template, Convex admin template, dashboard template, flat admin template, responsive admin template, web app">
+<meta name="author" content="PIXINVENT">
+<title>eCommerce Dashboard - Convex bootstrap 4 admin dashboard template</title>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+      <div class="col-md-6">
+            <div class="card card-body">
+
+                  <form action="" method="POST">
+                        <br><br><br><br>
+                        {% csrf_token %}
+                        
+                        {{ form }}
+                     
+                        <a class="btn btn-secondary" href="{% url 'home'%}">Cancel</a>
+                        <input class="btn btn-primary" type="submit" value="submit" name="submit">
+                  </form>
+            </div>
+      </div>
+</div>
+{% endblock %}
